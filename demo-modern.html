@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern CMS Sekolahku - Demo</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Modern Backend CSS -->
+    <link rel="stylesheet" href="assets/css/modern-backend.css">
+</head>
+<body class="modern-layout">
+    <div class="modern-wrapper">
+        <!-- Modern Header -->
+        <header class="modern-header">
+            <button class="sidebar-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="#" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CONTROL PANEL</span>
+            </a>
+            <nav class="header-nav">
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="fas fa-question-circle"></i> BANTUAN
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" target="_blank">
+                            <i class="fas fa-globe"></i> Situs Resmi</a></li>
+                        <li><a class="dropdown-item" href="#" target="_blank">
+                            <i class="fab fa-facebook"></i> Forum Diskusi</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#cms-info">
+                            <i class="fas fa-info-circle"></i> Tentang</a></li>
+                    </ul>
+                </div>
+                <a href="#" class="nav-link">
+                    <i class="fas fa-user-edit"></i> PROFIL
+                </a>
+                <a href="#" class="nav-link">
+                    <i class="fas fa-key"></i> KATA SANDI
+                </a>
+                <a href="#" class="nav-link text-danger">
+                    <i class="fas fa-sign-out-alt"></i> KELUAR
+                </a>
+            </nav>
+        </header>
+
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar" id="modernSidebar">
+            <nav class="sidebar-menu">
+                <ul class="list-unstyled">
+                    <li class="menu-item">
+                        <a href="#" class="menu-link active">
+                            <i class="fas fa-home"></i> <span>BERANDA</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <i class="fas fa-rocket"></i> <span>LIHAT SITUS</span>
+                        </a>
+                    </li>
+                    
+                    <p class="menu-label">KONTEN</p>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link" data-bs-toggle="collapse" data-bs-target="#blogMenu">
+                            <i class="fas fa-blog"></i> <span>BLOG</span> <i class="fas fa-chevron-down ms-auto"></i>
+                        </a>
+                    </li>
+                    <div class="collapse show" id="blogMenu">
+                        <ul class="submenu list-unstyled">
+                            <li><a href="#" class="menu-link">
+                                <i class="fas fa-images"></i> Gambar Slide</a></li>
+                            <li><a href="#" class="menu-link">
+                                <i class="fas fa-envelope"></i> Pesan Masuk</a></li>
+                            <li><a href="#" class="menu-link">
+                                <i class="fas fa-edit"></i> Tulisan</a></li>
+                        </ul>
+                    </div>
+                    
+                    <p class="menu-label">DATA</p>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <i class="fas fa-database"></i> <span>DATA INDUK</span>
+                        </a>
+                    </li>
+                    
+                    <p class="menu-label">AKUN</p>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <i class="fas fa-user-edit"></i> <span>UBAH PROFIL</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <i class="fas fa-key"></i> <span>UBAH KATA SANDI</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link text-danger">
+                            <i class="fas fa-sign-out-alt"></i> <span>KELUAR</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="modern-content" id="modernContent">
+            <!-- Dashboard Content -->
+            <div class="page-header">
+                <h1 class="page-title">Dashboard</h1>
+                <p class="page-subtitle">Selamat datang di Panel Kontrol CMS Sekolahku</p>
+            </div>
+
+            <div class="alert-modern alert-info mb-4">
+                <h4><i class="fas fa-info-circle"></i> INFORMASI !</h4>
+                <p>Desain baru CMS Sekolahku telah diterapkan dengan tampilan yang lebih modern dan responsif.</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="row-modern mb-4">
+                <div class="col-modern-3">
+                    <div class="info-box-modern">
+                        <div class="info-icon primary">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <p class="info-label">Pesan Masuk</p>
+                        <h3 class="info-value">25</h3>
+                        <a href="#" class="btn-modern btn-outline mt-3">
+                            <i class="fas fa-eye"></i> Lihat Detail
+                        </a>
+                    </div>
+                </div>
+                <div class="col-modern-3">
+                    <div class="info-box-modern">
+                        <div class="info-icon success">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <p class="info-label">Komentar</p>
+                        <h3 class="info-value">142</h3>
+                        <a href="#" class="btn-modern btn-outline mt-3">
+                            <i class="fas fa-eye"></i> Lihat Detail
+                        </a>
+                    </div>
+                </div>
+                <div class="col-modern-3">
+                    <div class="info-box-modern">
+                        <div class="info-icon warning">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <p class="info-label">Tulisan</p>
+                        <h3 class="info-value">89</h3>
+                        <a href="#" class="btn-modern btn-outline mt-3">
+                            <i class="fas fa-eye"></i> Lihat Detail
+                        </a>
+                    </div>
+                </div>
+                <div class="col-modern-3">
+                    <div class="info-box-modern">
+                        <div class="info-icon danger">
+                            <i class="fas fa-file"></i>
+                        </div>
+                        <p class="info-label">Halaman</p>
+                        <h3 class="info-value">12</h3>
+                        <a href="#" class="btn-modern btn-outline mt-3">
+                            <i class="fas fa-eye"></i> Lihat Detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- School Profile Card -->
+            <div class="modern-card mb-4">
+                <div class="modern-card-header">
+                    <h3 class="modern-card-title">
+                        <i class="fas fa-graduation-cap text-primary"></i>
+                        INFORMASI PENERIMAAN SISWA BARU
+                    </h3>
+                </div>
+                <div class="modern-card-body">
+                    <div class="modern-table">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td width="20%"><i class="fas fa-calendar text-primary"></i> Tahun Ajaran Aktif</td>
+                                    <td width="1px">:</td>
+                                    <td>2024/2025 / Ganjil</td>
+                                    <td width="30%"><i class="fas fa-calendar text-primary"></i> Tahun Penerimaan Siswa Baru</td>
+                                    <td width="1px">:</td>
+                                    <td>2024</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-wave-square text-primary"></i> Gelombang Pendaftaran</td>
+                                    <td>:</td>
+                                    <td>Gelombang 1</td>
+                                    <td><i class="fas fa-check-circle text-primary"></i> Status Penerimaan Siswa Baru</td>
+                                    <td>:</td>
+                                    <td>
+                                        <span class="badge bg-success">Dibuka</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sample Data Table -->
+            <div class="modern-card">
+                <div class="modern-card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="modern-card-title mb-0">Data Tulisan</h3>
+                        <div class="d-flex gap-2">
+                            <input type="text" class="form-control-modern" placeholder="Cari tulisan..." style="width: 250px;">
+                            <a href="#" class="btn-modern btn-primary">
+                                <i class="fas fa-plus"></i> Tambah Baru
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modern-card-body p-0">
+                    <div class="modern-table">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Judul</th>
+                                    <th>Penulis</th>
+                                    <th>Kategori</th>
+                                    <th>Status</th>
+                                    <th>Tanggal</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>Selamat Datang di Tahun Ajaran Baru</strong>
+                                        <br><small class="text-muted">Lorem ipsum dolor sit amet...</small>
+                                    </td>
+                                    <td>Admin</td>
+                                    <td><span class="badge bg-primary">Berita</span></td>
+                                    <td><span class="badge bg-success">Published</span></td>
+                                    <td>15 Jul 2024</td>
+                                    <td>
+                                        <div class="d-flex gap-1">
+                                            <a href="#" class="btn-modern btn-outline" style="padding: 4px 8px;">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="#" class="btn-modern btn-outline" style="padding: 4px 8px;">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Pengumuman Penerimaan Siswa Baru</strong>
+                                        <br><small class="text-muted">Sit amet consectetur adipiscing...</small>
+                                    </td>
+                                    <td>Kepala Sekolah</td>
+                                    <td><span class="badge bg-warning">Pengumuman</span></td>
+                                    <td><span class="badge bg-success">Published</span></td>
+                                    <td>12 Jul 2024</td>
+                                    <td>
+                                        <div class="d-flex gap-1">
+                                            <a href="#" class="btn-modern btn-outline" style="padding: 4px 8px;">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="#" class="btn-modern btn-outline" style="padding: 4px 8px;">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Kegiatan Ekstrakurikuler Semester Ini</strong>
+                                        <br><small class="text-muted">Elit sed do eiusmod tempor...</small>
+                                    </td>
+                                    <td>Guru</td>
+                                    <td><span class="badge bg-info">Kegiatan</span></td>
+                                    <td><span class="badge bg-secondary">Draft</span></td>
+                                    <td>10 Jul 2024</td>
+                                    <td>
+                                        <div class="d-flex gap-1">
+                                            <a href="#" class="btn-modern btn-outline" style="padding: 4px 8px;">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="#" class="btn-modern btn-outline" style="padding: 4px 8px;">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modern-card-body border-top">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="text-muted">
+                            Menampilkan 1 hingga 3 dari 3 entri
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="btn-group">
+                                <button type="button" class="btn-modern btn-outline" disabled>
+                                    <i class="fas fa-angle-double-left"></i>
+                                </button>
+                                <button type="button" class="btn-modern btn-outline" disabled>
+                                    <i class="fas fa-angle-left"></i>
+                                </button>
+                                <button type="button" class="btn-modern btn-outline" disabled>
+                                    <i class="fas fa-angle-right"></i>
+                                </button>
+                                <button type="button" class="btn-modern btn-outline" disabled>
+                                    <i class="fas fa-angle-double-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-light border-top py-3 mt-5">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="mb-0 text-muted">Copyright &copy; 2024 CMS Sekolahku Modern. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <p class="mb-0 text-muted">Powered by <a href="#" target="_blank">CMS Sekolahku v2.4.13</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Modern sidebar toggle script -->
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('modernSidebar');
+            const content = document.getElementById('modernContent');
+            
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('show');
+            } else {
+                sidebar.classList.toggle('collapsed');
+                content.classList.toggle('expanded');
+            }
+        }
+
+        // Close sidebar on mobile when clicking outside
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                const sidebar = document.getElementById('modernSidebar');
+                const toggle = document.querySelector('.sidebar-toggle');
+                
+                if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
+                    sidebar.classList.remove('show');
+                }
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            const sidebar = document.getElementById('modernSidebar');
+            const content = document.getElementById('modernContent');
+            
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('show');
+                sidebar.classList.remove('collapsed');
+                content.classList.remove('expanded');
+            }
+        });
+    </script>
+</body>
+</html>

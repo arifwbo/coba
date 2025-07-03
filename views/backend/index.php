@@ -37,17 +37,20 @@
 	<meta itemprop="name" content="<?=__session('school_name');?>" />
 	<meta itemprop="description" content="<?=__session('meta_description');?>" />
 	<meta itemprop="image" content="<?=base_url('media_library/images/'. __session('logo'));?>" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<link rel="icon" href="<?=base_url('media_library/images/'.__session('favicon'));?>">
-	<?=link_tag('assets/plugins/bootstrap-3/bootstrap.min.css');?>
-	<?=link_tag('assets/css/font-awesome.min.css');?>
+	<!-- Bootstrap 5 CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Font Awesome 6 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<!-- Legacy plugins for functionality -->
 	<?=link_tag('assets/plugins/toastr/toastr.css');?>
 	<?=link_tag('assets/plugins/datetimepicker/datetimepicker.css');?>
-	<?=link_tag('assets/plugins/adminLTE/AdminLTE.css');?>
 	<?=link_tag('assets/plugins/select2/select2.css');?>
 	<?=link_tag('assets/plugins/jquery.tagsinput/jquery.tagsinput.min.css');?>
 	<?=link_tag('assets/css/loading.css');?>
-	<?=link_tag('assets/css/backend.style.css');?>
+	<!-- Modern Backend CSS -->
+	<?=link_tag('assets/css/modern-backend.css');?>
 	<script type="text/javascript">
 	const _BASE_URL = '<?=base_url();?>';
 	const _CURRENT_URL = '<?=current_url();?>';
@@ -69,91 +72,101 @@
 	<script src="<?=base_url('assets/js/backend.min.js?v=20210227');?>"></script>
 </head>
 <!-- sidebar-collapse -->
-<body class="hold-transition skin-dark sidebar-mini <?=__session('sidebar_collapse') ? 'sidebar-collapse':''?>">
+<body class="modern-layout">
 	<noscript>You need to enable javaScript to run this app</noscript>
-	<div class="wrapper">
-		<header class="main-header">
+	<div class="modern-wrapper">
+		<!-- Modern Header -->
+		<header class="modern-header">
+			<button class="sidebar-toggle" onclick="toggleSidebar()">
+				<i class="fas fa-bars"></i>
+			</button>
 			<a href="#" class="logo">
-				<span class="logo-mini"><i class="fa fa-cogs"></i></span>
-				<span class="logo-lg"><b>CONTROL</b> PANEL</span>
+				<i class="fas fa-graduation-cap"></i>
+				<span>CONTROL PANEL</span>
 			</a>
-			<nav class="navbar navbar-static-top">
-				<a onclick="_H.SidebarCollapse(); return false;" class="sidebar-toggle" data-toggle="push-menu" role="button">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				<div class="collapse navbar-collapse pull-right" id="navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-question-circle-o"></i> BANTUAN <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="https://www.sekolahku.web.id" target="_blank"><i class="fa fa-globe"></i> Situs Resmi</a></li>
-								<li><a href="https://www.facebook.com/groups/cmssekolahku" target="_blank"><i class="fa fa-facebook"></i> Forum Diskusi</a></li>
-								<li><a href="#" data-toggle="modal" data-target="#cms-info"><i class="fa fa-info-circle"></i> Tentang</a></li>
-							</ul>
-						</li>
-						<?php if (__session('user_type') === 'super_user' || __session('user_type') === 'administrator') { ?>
-							<li <?=isset($user_profile) ? 'class="active"' : '';?>><a href="<?=site_url('profile');?>"><i class="fa fa-edit"></i> UBAH PROFIL</a></li>
-						<?php } ?>
-						<li <?=isset($change_password) ? 'class="active"' : '';?>><a href="<?=site_url('change_password');?>"><i class="fa fa-key"></i> UBAH KATA SANDI</a></li>
-						<li class="logout"><a href="<?=site_url('logout');?>"><i class="fa fa-power-off"></i> KELUAR</a></li>
+			<nav class="header-nav">
+				<div class="nav-item dropdown">
+					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+						<i class="fas fa-question-circle"></i> BANTUAN
+					</a>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="https://www.sekolahku.web.id" target="_blank">
+							<i class="fas fa-globe"></i> Situs Resmi</a></li>
+						<li><a class="dropdown-item" href="https://www.facebook.com/groups/cmssekolahku" target="_blank">
+							<i class="fab fa-facebook"></i> Forum Diskusi</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#cms-info">
+							<i class="fas fa-info-circle"></i> Tentang</a></li>
 					</ul>
 				</div>
+				<?php if (__session('user_type') === 'super_user' || __session('user_type') === 'administrator') { ?>
+					<a href="<?=site_url('profile');?>" class="nav-link <?=isset($user_profile) ? 'active' : '';?>">
+						<i class="fas fa-user-edit"></i> PROFIL
+					</a>
+				<?php } ?>
+				<a href="<?=site_url('change_password');?>" class="nav-link <?=isset($change_password) ? 'active' : '';?>">
+					<i class="fas fa-key"></i> KATA SANDI
+				</a>
+				<a href="<?=site_url('logout');?>" class="nav-link text-danger">
+					<i class="fas fa-sign-out-alt"></i> KELUAR
+				</a>
 			</nav>
 		</header>
-		<aside class="main-sidebar">
+
+		<!-- Modern Sidebar -->
+		<aside class="modern-sidebar" id="modernSidebar">
 			<?php $this->load->view('backend/sidebar');?>
 		</aside>
-		<div class="content-wrapper">
+
+		<!-- Main Content -->
+		<div class="modern-content" id="modernContent">
 			<?php $this->load->view($content);?>
 		</div>
-		<div class="modal" id="cms-info">
+		<!-- About Modal -->
+		<div class="modal fade" id="cms-info" tabindex="-1">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">×</span></button>
-							<h4 class="modal-title">Tentang</h4>
-						</div>
-						<div class="modal-body">
-							<table class="table table-condensed table-bordered">
-								<tbody>
-									<tr>
-										<td width="20%">Code Name</td>
-										<td width="1px">:</td>
-										<td><?=config_item('apps')?></td>
-									</tr>
-									<tr>
-										<td>Author</td>
-										<td>:</td>
-										<td><a href="https://www.facebook.com/antonsofyan">Anton Sofyan</a></td>
-									</tr>
-									<tr>
-										<td>Email</td>
-										<td>:</td>
-										<td><?=config_item('email')?></td>
-									</tr>
-									<tr>
-										<td>Version</td>
-										<td>:</td>
-										<td><?=config_item('version')?></td>
-									</tr>
-									<tr>
-										<td>Link</td>
-										<td>:</td>
-										<td><a href="<?=config_item('website')?>">sekolahku.web.id</a></td>
-									</tr>
-									<tr>
-										<td>Copyright</td>
-										<td>:</td>
-										<td>&copy; 2014-<?=date('Y')?></td>
-									</tr>
-								</tbody>
-							</table>
-							<br>
-							<p><b>SYARAT DAN KETENTUAN :</b></p>
+						<h5 class="modal-title">Tentang</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+					</div>
+					<div class="modal-body">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+									<td width="20%">Code Name</td>
+									<td width="1px">:</td>
+									<td><?=config_item('apps')?></td>
+								</tr>
+								<tr>
+									<td>Author</td>
+									<td>:</td>
+									<td><a href="https://www.facebook.com/antonsofyan">Anton Sofyan</a></td>
+								</tr>
+								<tr>
+									<td>Email</td>
+									<td>:</td>
+									<td><?=config_item('email')?></td>
+								</tr>
+								<tr>
+									<td>Version</td>
+									<td>:</td>
+									<td><?=config_item('version')?></td>
+								</tr>
+								<tr>
+									<td>Link</td>
+									<td>:</td>
+									<td><a href="<?=config_item('website')?>">sekolahku.web.id</a></td>
+								</tr>
+								<tr>
+									<td>Copyright</td>
+									<td>:</td>
+									<td>&copy; 2014-<?=date('Y')?></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="mt-4">
+							<p><strong>SYARAT DAN KETENTUAN :</strong></p>
 							<ol>
 								<li>Tidak diperkenankan memperjualbelikan CMS ini tanpa seizin dari <a href="https://www.facebook.com/antonsofyan">Pengembang CMS Sekolahku</a>.</li>
 								<li>Tidak diperkenankan membuat Aplikasi turunan dari CMS ini dengan nama baru.</li>
@@ -164,15 +177,69 @@
 					</div>
 				</div>
 			</div>
-
-			<footer class="main-footer">
-				<div class="pull-right hidden-xs">
-					<p>Powered by <a href="<?=$this->config->item('website');?>" target="_blank"><?=$this->config->item('apps');?> <?=$this->config->item('version');?></a></p>
-				</div>
-				<p>Copyright &copy; <?=date('Y');?> <?=__session('school_name')?>. All rights reserved.</p>
-			</footer>
-			<div class="control-sidebar-bg"></div>
 		</div>
-		<a href="javascript:" id="return-to-top"><i class="fa fa-angle-double-up"></i></a>
-	</body>
-	</html>
+
+		<!-- Footer -->
+		<footer class="bg-light border-top py-3 mt-5">
+			<div class="container-fluid">
+				<div class="row align-items-center">
+					<div class="col-md-6">
+						<p class="mb-0 text-muted">Copyright &copy; <?=date('Y');?> <?=__session('school_name')?>. All rights reserved.</p>
+					</div>
+					<div class="col-md-6 text-end">
+						<p class="mb-0 text-muted">Powered by <a href="<?=$this->config->item('website');?>" target="_blank"><?=$this->config->item('apps');?> <?=$this->config->item('version');?></a></p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<!-- Bootstrap 5 JS Bundle -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Legacy JS for functionality -->
+	<script src="<?=base_url('assets/plugins/shim.js?v=20210227');?>"></script>
+	<script src="<?=base_url('assets/plugins/xlsx.full.min.js?v=20210227');?>"></script>
+	<script src="<?=base_url('assets/plugins/Blob.js?v=20210227');?>"></script>
+	<script src="<?=base_url('assets/plugins/FileSaver.js?v=20210227');?>"></script>
+	<script src="<?=base_url('assets/js/backend.min.js?v=20210227');?>"></script>
+	
+	<!-- Modern sidebar toggle script -->
+	<script>
+		function toggleSidebar() {
+			const sidebar = document.getElementById('modernSidebar');
+			const content = document.getElementById('modernContent');
+			
+			if (window.innerWidth <= 768) {
+				sidebar.classList.toggle('show');
+			} else {
+				sidebar.classList.toggle('collapsed');
+				content.classList.toggle('expanded');
+			}
+		}
+
+		// Close sidebar on mobile when clicking outside
+		document.addEventListener('click', function(e) {
+			if (window.innerWidth <= 768) {
+				const sidebar = document.getElementById('modernSidebar');
+				const toggle = document.querySelector('.sidebar-toggle');
+				
+				if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
+					sidebar.classList.remove('show');
+				}
+			}
+		});
+
+		// Handle window resize
+		window.addEventListener('resize', function() {
+			const sidebar = document.getElementById('modernSidebar');
+			const content = document.getElementById('modernContent');
+			
+			if (window.innerWidth > 768) {
+				sidebar.classList.remove('show');
+				sidebar.classList.remove('collapsed');
+				content.classList.remove('expanded');
+			}
+		});
+	</script>
+</body>
+</html>
