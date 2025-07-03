@@ -39,6 +39,7 @@
 	<meta itemprop="image" content="<?=base_url('media_library/images/'. __session('logo'));?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="icon" href="<?=base_url('media_library/images/'.__session('favicon'));?>">
+	<!-- Legacy CSS -->
 	<?=link_tag('assets/plugins/bootstrap-3/bootstrap.min.css');?>
 	<?=link_tag('assets/css/font-awesome.min.css');?>
 	<?=link_tag('assets/plugins/toastr/toastr.css');?>
@@ -48,6 +49,10 @@
 	<?=link_tag('assets/plugins/jquery.tagsinput/jquery.tagsinput.min.css');?>
 	<?=link_tag('assets/css/loading.css');?>
 	<?=link_tag('assets/css/backend.style.css');?>
+	
+	<!-- Modern Theme Enhancement (Optional) -->
+	<!-- Uncomment the line below to add modern styling enhancements -->
+	<!-- <?=link_tag('assets/css/modern-theme.css');?> -->
 	<script type="text/javascript">
 	const _BASE_URL = '<?=base_url();?>';
 	const _CURRENT_URL = '<?=current_url();?>';
