@@ -75,6 +75,7 @@
 		<script src="https://www.google.com/recaptcha/api.js?hl=id" async defer></script>
 	<?php } ?>
 	<script src="<?=base_url('assets/js/frontend.min.js')?>"></script>
+	<script src="<?=base_url('assets/js/modern-theme.js')?>"></script>
 </head>
 <body>
 	<noscript>
