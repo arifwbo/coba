@@ -1,0 +1,28 @@
+# Ignore logs and cache files
+application/logs/*
+application/cache/*
+!application/logs/index.html
+!application/cache/index.html
+
+# Ignore demo files
+demo.html
+views/themes/sky_light/demo.html
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# Ignore backup files
+*.bak
+*.backup
